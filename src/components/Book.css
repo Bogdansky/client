@@ -1,0 +1,195 @@
+.t336__block {
+    overflow: hidden
+}
+
+.t336__table {
+    display: table;
+    width: 100%;
+    vertical-align: middle;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+    height: 650px
+}
+
+.t336__bg {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0
+}
+
+.t336__cell:hover .t336__bg_animated, .t336__cell:focus .t336__bg_animated {
+    -moz-transform: scale(1.04);
+    -ms-transform: scale(1.04);
+    -webkit-transform: scale(1.04);
+    -o-transform: scale(1.04);
+    transform: scale(1.04)
+}
+
+.t336__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0
+}
+
+.t336__show_hover .t336__overlay {
+    opacity: 0
+}
+
+.t336__cell:hover .t336__overlay {
+    opacity: .8
+}
+
+.t336__show_hover .t336__cell:hover .t336__overlay {
+    opacity: 1
+}
+
+.t336__cell {
+    display: table-cell;
+    width: 100%;
+    height: 100%
+}
+
+.t336__textwrapper {
+    padding: 20px 40px;
+    position: relative
+}
+
+.t336__show_hover .t336__textwrapper {
+    opacity: 0
+}
+
+    .t336__show_hover .t336__textwrapper.t336__textwrapper_animated {
+        -moz-transform: translateY(15%);
+        -ms-transform: translateY(15%);
+        -webkit-transform: translateY(15%);
+        -o-transform: translateY(15%);
+        transform: translateY(15%)
+    }
+
+.t336__show_hover .t336__cell:hover .t336__textwrapper {
+    opacity: 1
+}
+
+.t336__cell:hover .t336__textwrapper_animated {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0)
+}
+
+.t336__textwrapper__content {
+    margin: 30px auto;
+    position: relative
+}
+
+.t336__text {
+    color: #fff;
+    margin-top: 30px
+}
+
+.t336__title {
+    color: #fff
+}
+
+.t336__img {
+    width: 100%;
+    max-width: 120px
+}
+
+.t336__animation_fast {
+    -webkit-transition: all ease-in-out .25s;
+    -moz-transition: all ease-in-out .25s;
+    -o-transition: all ease-in-out .25s;
+    transition: all ease-in-out .25s
+}
+
+.t336__animation_slow {
+    -webkit-transition: all ease-in-out .45s;
+    -moz-transition: all ease-in-out .45s;
+    -o-transition: all ease-in-out .45s;
+    transition: all ease-in-out .45s
+}
+
+.t336 .t-col_6, .t336 .t-col_7, .t336 .t-col_8, .t336 .t-col_9, .t336 .t-col_10, .t336 .t-col_11 {
+    float: none;
+    display: block;
+    margin: 0 auto
+}
+
+.t336__button-container {
+    -webkit-transition: all ease-in-out .2s;
+    -moz-transition: all ease-in-out .2s;
+    -o-transition: all ease-in-out .2s;
+    transition: all ease-in-out .2s;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0
+}
+
+.t336__button-container_show {
+    opacity: 1
+}
+
+.t336__textwrapper__content {
+    -webkit-transition: all ease-in-out .2s;
+    -moz-transition: all ease-in-out .2s;
+    -o-transition: all ease-in-out .2s;
+    transition: all ease-in-out .2s
+}
+
+.t336__button-wrapper {
+    display: inline-block;
+    margin-top: 50px
+}
+
+.t336__submit {
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    border: 0 none;
+    -webkit-appearance: none;
+    background: none
+}
+
+.t336__button-bottom .t336__textwrapper {
+    position: static
+}
+
+.t336__button-bottom .t336__button-container {
+    left: 40px;
+    bottom: 40px;
+    right: 40px;
+    -moz-transform: translateY(30%);
+    -ms-transform: translateY(30%);
+    -webkit-transform: translateY(30%);
+    -o-transform: translateY(30%);
+    transform: translateY(30%)
+}
+
+    .t336__button-bottom .t336__button-container.t336__button-container_show {
+        left: 40px;
+        bottom: 40px;
+        right: 40px;
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -o-transform: translateY(0);
+        transform: translateY(0)
+    }
+
+@media screen and (max-width: 960px) {
+    .t336__table {
+        height: 400px
+    }
+}
