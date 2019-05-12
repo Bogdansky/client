@@ -27,25 +27,28 @@ export class NavMenu extends Component {
         <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
           <Container>
             <NavbarBrand tag={Link} to="/">
-              <img id="brand" src="https://github.githubassets.com/images/icons/emoji/unicode/1f600.png" />
+              <img id="brand" src="https://github.githubassets.com/images/icons/emoji/unicode/1f600.png" alt="no-content"/>
             </NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
               <ul className="navbar-nav flex-grow">
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
+                  <NavLink tag={Link} className="text-warning" to="/">Home</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink tag={Link} className="text-dark" to="/boards">My books</NavLink>
+                    <NavLink tag={Link} className="text-warning" to="/boards">My books</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
+                  <NavLink tag={Link} className="text-warning" to="/counter">Counter</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
+                  <NavLink tag={Link} className="text-warning" to="/library">Library</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink tag={Link} className="text-dark" to="/signup">Sign up</NavLink>
+                    <NavLink tag={Link} className="text-warning" to="/signup">Sign up</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink tag={Link} className="text-warning" to="/signin">Log in</NavLink>
                 </NavItem>
               </ul>
             </Collapse>
