@@ -1,4 +1,5 @@
 import React from 'react'
+import {Route, Redirect } from 'react-router'
 
 export class SignUp extends React.Component {
     constructor(props) {
@@ -6,24 +7,65 @@ export class SignUp extends React.Component {
         this.state = {
             email: "",
             password: "",
-            tryPassword: ""
+            tryPassword: "",
+            error: false,
+            loggedIn: false
         }
 
         this.onChange = this.onChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit() {
-        alert(`${this.state.email}: ${this.state.password}`);
+    handleSubmit(e) {
+        e.preventDefault();
+        try {
+            let body = JSON.stringify({
+                "email": this.state.email,
+                "password": this.state.password
+            });
+            console.log(body);
+            let options = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                mode: 'cors',
+                body
+            };
+            fetch(`https://localhost:44326/api/users/signup`, options)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.token) {
+                        localStorage.setItem("userId", data.id);
+                        localStorage.setItem("token", data.token);
+                        this.setState({ logged: true })
+
+                    } else if (data.statusCode && data.message) {
+                        this.handleError(data.statusCode, data.message);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+        catch (e) {
+            console.log('Ошибка');
+        }
+    }
+
+    handleError(statusCode, message) {
+        localStorage.setItem("statusCode", statusCode);
+        localStorage.setItem("message", message);
+        this.setState({ error: true });
     }
 
     onChange(e) {
-        if (e.target.type == "email")
+        if (e.target.type === "email")
             this.setState({
                 email: e.target.value
             })
-        else if (e.target.type == "password") {
-            if (e.target.name == "first_password") {
+        else if (e.target.type === "password") {
+            if (e.target.name === "first_password") {
                 this.setState({
                     password: e.target.value
                 });
@@ -37,7 +79,13 @@ export class SignUp extends React.Component {
     }
 
     render() {
-        return (
+        return this.state.error ?
+            (<Redirect to='/error' />)
+            :
+            this.state.loggedIn ?
+                (<Redirect to='/' />)
+                :
+            (
             <div className="container h-100">
                 <div className="row h-100 justify-content-center align-items-center">
                     <form className="col-12" onSubmit={this.handleSubmit}>
@@ -45,15 +93,15 @@ export class SignUp extends React.Component {
                             <label className="form-text text-muted">Email</label>
                             <input type="email" className="form-control" value={this.state.email} onChange={this.onChange} placeholder="example@mail.com" required />
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label className="form-text text-muted">Password</label>
                             <input type="password" className="form-control" name="first_password" value={this.state.password} onChange={this.onChange} placeholder="*******" required />
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label className="form-text text-muted">Repeat password</label>
-                            <input type="password" className="form-control" name="second_password" value={this.state.password} onChange={this.onChange} placeholder="*******" />
+                            <input type="password" className="form-control" name="second_password" value={this.state.tryPassword} onChange={this.onChange} placeholder="*******" />
                         </div>
-                        <button className="btn btn-outline-primary">Sign up</button>
+                        <button type="submit" className="btn btn-outline-primary">Sign up</button>
                     </form>
                 </div>
             </div>
