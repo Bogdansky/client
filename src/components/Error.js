@@ -19,8 +19,7 @@ export class Error extends React.Component {
             <div className="errorBody">
                 <div id="titles">
                     <div id="titlecontent">
-                        <p>Ошибка {this.state.statusCode}</p>
-                        <p>{this.state.message}</p>
+                        <p>{this.state.statusCode}. {this.state.message}</p>
                     </div>
                 </div>
             </div>  

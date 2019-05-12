@@ -50,13 +50,13 @@ export class SignIn extends React.Component {
             });
         }
         catch(e){
-            console.log('Ошибка');
+            console.log('СњС€РёР±РєР°');
         }
     }
 
     handleError(statusCode, message) {
         localStorage.setItem("statusCode", statusCode);
-        localStorage.setItem("message", statusCode == 400 ? `${message}. Возможно, неправильный email или пароль` :  message);
+        localStorage.setItem("message", statusCode == 400 ? `${message}. Maybe, incorrect email or password` :  message);
         this.setState({ error: true });
     }
 
