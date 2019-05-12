@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
-import { FetchData } from './components/FetchData';
+import Library from './components/Library';
 import { Counter } from './components/Counter';
 import { Main } from './components/Main';
 import { SignUp } from './components/SignUp'
@@ -14,14 +14,7 @@ export default class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            userId: 0
-        };
-        this.setUserId = this.setUserId.bind(this);
-    }
 
-    setUserId(userId) {
-        this.setState({ userId });
     }
 
   render () {
@@ -30,10 +23,10 @@ export default class App extends Component {
             <Route exact path='/' component={Home} />
             <Route path='/boards' component={Main} />
             <Route path='/counter' component={Counter} />
-            <Route path='/fetch-data' component={FetchData} />
             <Route path='/signup' component={SignUp} />
             <Route path='/signin' component={SignIn} />
             <Route path='/error' component={Error} />
+            <Route path='/library' component={Library} />
       </Layout>
     );
   }
