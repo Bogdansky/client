@@ -9,7 +9,7 @@
     background-color: #000;
     position: relative;
     overflow: hidden;
-    height: 650px
+    height: 550px
 }
 
 .t336__bg {
@@ -39,6 +39,12 @@
     left: 0
 }
 
+.t336__overlay .t336__animation_fast{
+    background-image: -moz-linear-gradient(top, rgba(0,0,0,0.70), rgba(0,0,0,0.70));
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.70), rgba(0,0,0,0.70));
+    background-image: -o-linear-gradient(top, rgba(0,0,0,0.70), rgba(0,0,0,0.70)); 
+}
+
 .t336__show_hover .t336__overlay {
     opacity: 0
 }
@@ -66,13 +72,13 @@
     opacity: 0
 }
 
-    .t336__show_hover .t336__textwrapper.t336__textwrapper_animated {
-        -moz-transform: translateY(15%);
-        -ms-transform: translateY(15%);
-        -webkit-transform: translateY(15%);
-        -o-transform: translateY(15%);
-        transform: translateY(15%)
-    }
+.t336__show_hover .t336__textwrapper.t336__textwrapper_animated {
+    -moz-transform: translateY(15%);
+    -ms-transform: translateY(15%);
+    -webkit-transform: translateY(15%);
+    -o-transform: translateY(15%);
+    transform: translateY(15%)
+}
 
 .t336__show_hover .t336__cell:hover .t336__textwrapper {
     opacity: 1
@@ -88,7 +94,8 @@
 
 .t336__textwrapper__content {
     margin: 30px auto;
-    position: relative
+    position: relative;
+    padding-bottom: 0px
 }
 
 .t336__text {
@@ -162,6 +169,14 @@
     background: none
 }
 
+.t336__submit .t-btn .t-btn_sm {
+    color:#000000;
+    background-color:#ffffff;
+    border-radius:30px;
+    -moz-border-radius:30px;
+    -webkit-border-radius:30px;
+}
+
 .t336__button-bottom .t336__textwrapper {
     position: static
 }
@@ -192,4 +207,52 @@
     .t336__table {
         height: 400px
     }
+}
+
+.infobox {
+    border: 1px solid #a2a9b1;
+    background: #f8f9fa;
+    margin-bottom: .5em;
+    margin-left: 1em;
+    padding: .4em;
+    float: right;
+    clear: right;
+    font-size: 88%;
+    width: 23em;
+    vertical-align: middle;
+    text-align: left;
+    line-height: 1.5em;
+    border-collapse: separate;
+    border-spacing: 2px;
+    height: 400px
+}
+
+.header {
+    text-align: center;
+    font-size: 125%;
+    background: #6f32d9;
+    color: white;
+}
+.headerImage {
+    text-align: center;
+}
+
+.infobox td, .infobox th {
+    vertical-align: top;
+    color: black
+}
+
+.infobox tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.infobox img {
+    width: 200px;
+    height: 300px
+}
+
+.infobox btn {
+    text-align: center
 }

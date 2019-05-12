@@ -1,52 +1,123 @@
 import React from 'react'
+import { Route, Redirect } from 'react-router';
 import './Book.css'
 
-class Book extends React.Component {
+export default class Book extends React.Component {
+    static displayName = Book.name;
+
     constructor(props) {
         super(props);
 
         this.state = {
-            id: this.props.key,
+            id: this.props.id,
             name: this.props.name,
             author: this.props.author,
             cover: this.props.cover,
-            pages: this.props.pages
+            pages: this.props.numberOfPages,
+            days: 1,
+            wantsToRead: false,
+            reading: false,
+            error: false
         }
 
         this.getPages = this.getPages.bind(this);
-        this.getStyle = this.getStyle.bind(this);
+        this.getReadLink = this.getReadLink.bind(this);
+        this.changeNumber = this.changeNumber.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.letReadOrChangeMind = this.letReadOrChangeMind.bind(this);
     }
 
     getPages() {
-        return `${this.state.pages} стр.`;
+        return `${this.state.pages} pages`;
     }
 
-    getStyle() {
-        return `background-image: url(&quot;${this.state.cover}&quot;);`;
+    getReadLink() {
+        let userId = localStorage.getItem("userId") || 0;
+        return `https://localhost:44326/api/users/${userId}/books/${this.state.id}?days=${this.state.days}`;
+    }
+
+    letReadOrChangeMind(e) {
+        e.preventDefault();
+        let value = this.state.wantsToRead;
+        this.setState({ wantsToRead: !value });
+    }
+
+    changeNumber(e) {
+        e.preventDefault();
+        this.setState({ days: e.target.value });
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        let options = {
+            method: "POST",
+            mode: "cors"
+        };
+        fetch(this.getReadLink(), options)
+            .then(response => {
+                if (response > 399) {
+                    localStorage.setItem("statusCode", response.status);
+                    localStorage.setItem("message", response.statusText);
+                    this.setState({ error: true });
+                } else {
+                    this.setState({ reading: true });
+                }
+            })
+            .catch(error => {
+                localStorage.setItem("message", error.message);
+                this.setState({ error: true });
+            });
     }
 
     render() {
-        return (
-            //<div>
-            //    <div className="book_cover">
-            //        <img src={this.state.cover} alt=""/>
-            //    </div>
-                //<div className="book_description">
-                //    <blockquote className="blockquote-reverse">
-                //        <p>{this.state.name} ({this.getPages()})</p>
-                //        <footer>{this.state.author}</footer>
-                //    </blockquote>
-                //</div>    
-            //</div>
+        if (this.state.error) {
+            return (<Redirect to='/error' />);
+        }
+
+        return this.state.reading ? 
+            <Redirect to="/boards" />
+            :
+            this.state.wantsToRead ?
+            (
+                <form onSubmit={this.handleSubmit}>
+                    <table className="infobox">
+                        <tbody>
+                            <tr className="header"><td colSpan={2}>{this.state.name}</td></tr>
+                            <tr className="headerImage">
+                                <td colSpan={2}>
+                                    <a onClick={this.letReadOrChangeMind} target="_blank"><img src={this.state.cover} /></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Author</th>
+                                <td>{this.state.author}</td>
+                            </tr>
+                            <tr>
+                                <th>Pages</th>
+                                <td>{this.state.pages}</td>
+                            </tr>
+                            <tr>
+                                <th>Choose number of days</th>
+                                <td>
+                                    <input className="form-control" type="number" min={1} max={this.state.pages} value={this.state.days} onChange={this.changeNumber} />
+                                </td>
+                             </tr>
+                             <tr><td colSpan={2}><button className="btn btn-warning">Read</button></td></tr>
+                        </tbody>
+                    </table>
+                </form>
+            )
+            :
+            (
             <div className="t-col t-col_8 t-align_center t336__block t336__show_hover">
-                <a href="#" target="_blank">
-                    <div className="t336__table" style="height:550px;">
+                <a onClick={this.letReadOrChangeMind} target="_blank">
+                    <div className="t336__table">
                         <div className="t336__cell t-align_center t-valign_middle">
-                            <div className="t336__bg t336__animation_fast t336__bg_animated t-bgimg loaded" bgimgfield="img" data-original={this.state.cover} style={this.getStyle()} src=""></div>
-                            <div className="t336__overlay t336__animation_fast" style="background-image: -moz-linear-gradient(top, rgba(0,0,0,0.70), rgba(0,0,0,0.70)); background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.70), rgba(0,0,0,0.70)); background-image: -o-linear-gradient(top, rgba(0,0,0,0.70), rgba(0,0,0,0.70)); background-image: -ms-linear-gradient(top, rgba(0,0,0,0.70), rgba(0,0,0,0.70));"></div>
+                            <div className="t336__bg t336__animation_fast t336__bg_animated t-bgimg loaded" bgimgfield="img" data-original={this.state.cover} style={{ backgroundImage: `url(${this.state.cover})` }} src=""></div>
+                            <div className="t336__overlay t336__animation_fast"></div>
                             <div className="t336__textwrapper t336__animation_fast t336__textwrapper_animated">
-                                <div className="t336__textwrapper__content" style="padding-bottom: 0px;">
-                                    <div className="t336__title t-title t-title_md" style="" field="title">
+                                <div className="t336__textwrapper__content">
+                                    <div className="t336__title t-title t-title_md" field="title">
                                         <div className="book_description">
                                             <blockquote className="blockquote-reverse">
                                                 <p>{this.state.name} ({this.getPages()})</p>
@@ -56,7 +127,7 @@ class Book extends React.Component {
                                     </div>
                                     <div className="t336__button-container">
                                         <div className="t336__button-wrapper">
-                                            <div className="t336__submit t-btn t-btn_sm" style="color:#000000;background-color:#ffffff;border-radius:30px; -moz-border-radius:30px; -webkit-border-radius:30px;">Перейти на сайт</div>
+                                            <div className="t336__submit t-btn t-btn_sm">Перейти на сайт</div>
                                         </div>
                                     </div>
                                 </div>
