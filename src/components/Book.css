@@ -1,15 +1,16 @@
 .t336__block {
-    overflow: hidden
+    overflow: hidden;
+    margin: 10px 10px 10px 3px
 }
 
 .t336__table {
     display: table;
-    width: 100%;
+    width: 300px;
     vertical-align: middle;
     background-color: #000;
     position: relative;
     overflow: hidden;
-    height: 550px
+    height: 450px
 }
 
 .t336__bg {
@@ -104,7 +105,7 @@
 }
 
 .t336__title {
-    color: #fff
+    color: #ff6
 }
 
 .t336__img {
@@ -224,7 +225,7 @@
     line-height: 1.5em;
     border-collapse: separate;
     border-spacing: 2px;
-    height: 400px
+    height: 38em
 }
 
 .header {

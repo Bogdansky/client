@@ -109,7 +109,7 @@ export default class Book extends React.Component {
             )
             :
             (
-            <div className="t-col t-col_8 t-align_center t336__block t336__show_hover">
+            <div className="t-col t-col_8 t-align_center t336__block t336__show_hover rounded">
                 <a onClick={this.letReadOrChangeMind} target="_blank">
                     <div className="t336__table">
                         <div className="t336__cell t-align_center t-valign_middle">
@@ -124,11 +124,6 @@ export default class Book extends React.Component {
                                                 <footer>{this.state.author}</footer>
                                             </blockquote>
                                         </div>    
-                                    </div>
-                                    <div className="t336__button-container">
-                                        <div className="t336__button-wrapper">
-                                            <div className="t336__submit t-btn t-btn_sm">Перейти на сайт</div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
