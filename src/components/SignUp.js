@@ -45,10 +45,12 @@ export class SignUp extends React.Component {
                     }
                 })
                 .catch(error => {
+                    this.handleError(666, "Registration error");
                     console.log(error);
                 });
         }
         catch (e) {
+            this.handleError(666, e.message);
             console.log('Ошибка');
         }
     }

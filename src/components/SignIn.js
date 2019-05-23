@@ -47,6 +47,7 @@ export class SignIn extends React.Component {
             })
             .catch(error => {
                 console.log(error);
+                this.handleError(666, "Connection error. Maybe you or server was not connected to the Internet.");
             });
         }
         catch(e){
