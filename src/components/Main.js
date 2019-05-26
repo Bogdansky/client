@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Redirect } from 'react-router';
 import Library from './Library'
 import Board from './Board'
+import './Main.css'
 
 export class Main extends React.Component {
     static displayName = Main.name;
@@ -12,12 +13,14 @@ export class Main extends React.Component {
         this.state = {
             userId: localStorage.getItem("userId"),
             token: localStorage.getItem("token"),
-            progress: [],
+            bookProgress: [],
             error: false
         };
 
         this.loadProgress = this.loadProgress.bind(this);
         this.handleError = this.handleError.bind(this);
+
+        this.loadProgress();
     }
 
     loadProgress() {
@@ -33,6 +36,7 @@ export class Main extends React.Component {
                 if (response.status > 399) {
                     this.handleError(response.status, response.statusText);
                 }
+                return response;
             })
             .then(res => res.json())
             .then(data => {
@@ -45,7 +49,7 @@ export class Main extends React.Component {
                     localStorage.setItem("message", data.Message);
                 } else {
                     this.setState({
-                        progress: data.bookProgress || []
+                        bookProgress: data.bookProgress
                     });
                 }
             })
@@ -62,16 +66,21 @@ export class Main extends React.Component {
         if (this.state.error) return (
             <Redirect to='/error' />
         );
-        this.loadProgress();
-        return (
-            this.state.progress.length == 0 ?
+
+        return this.state.bookProgress.length == 0
+            ?
+            (
                 <div>
-                    You not reading anything yet. Maybe you want to choose some from this.
-                    <Library />
+                    You not reading anything yet. Maybe you would want to choose some from this.
+                    <Library key={new Date().getMilliseconds()} />
                 </div>
-                : this.state.progress.map(p =>
-                <Board book={p.book} progress={p.progress} />
             )
-        );
+            :
+            <div id="boards">
+                {this.state.bookProgress.map(p => {
+                    return <Board key={p.book.id} userId={this.state.userId} book={p.book} progress={p.progress} />
+                })}
+                <button></button>
+            </div>
     }
 }
