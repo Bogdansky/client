@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Route, Redirect } from 'react-router';
+import $ from 'jquery'
+import UpdateBook from './UpdateBook'
 import './Book.css'
 
 export default class Book extends React.Component {
@@ -21,9 +23,11 @@ export default class Book extends React.Component {
         }
 
         this.getPages = this.getPages.bind(this);
+        this.setCover = this.setCover.bind(this);
         this.getReadLink = this.getReadLink.bind(this);
         this.changeNumber = this.changeNumber.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSaveCover = this.handleSaveCover.bind(this);
         this.letReadOrChangeMind = this.letReadOrChangeMind.bind(this);
     }
 
@@ -36,6 +40,10 @@ export default class Book extends React.Component {
         return `https://localhost:44326/api/users/${userId}/books/${this.state.id}?days=${this.state.days}`;
     }
 
+    setCover(newCover) {
+        this.setState({ cover: newCover });
+    }
+
     letReadOrChangeMind(e) {
         e.preventDefault();
         let value = this.state.wantsToRead;
@@ -45,6 +53,25 @@ export default class Book extends React.Component {
     changeNumber(e) {
         e.preventDefault();
         this.setState({ days: e.target.value });
+    }
+
+    handleSaveCover(e) {
+        //
+        e.preventDefault();
+        let form = new FormData();
+        let cover = $('#inputCover').val();
+        form.append("file", $('input[type="file"]')[0].files[0]);
+
+        $.ajax({
+            type: "PUT",
+            url: `https://localhost:44326/api/books/${this.state.id}/cover${cover ? `?cover=${cover}` : ""}`,
+            data: form,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: res => this.setState({ cover: res.cover }),
+            error: data => console.log(data)
+        })
     }
 
     handleSubmit(e) {
@@ -102,7 +129,13 @@ export default class Book extends React.Component {
                                     <input className="form-control" type="number" min={1} max={this.state.pages} value={this.state.days} onChange={this.changeNumber} />
                                 </td>
                              </tr>
-                             <tr><td colSpan={2}><button className="btn btn-warning">Read</button></td></tr>
+                            <tr>
+                                    <td><button className="btn btn-warning">Read</button></td>
+                                    {!this.state.cover ?
+                                        <td>
+                                            <UpdateBook setCover={this.setCover} handleSaveCover={this.handleSaveCover} />
+                                        </td> : ""}
+                            </tr>
                         </tbody>
                     </table>
                 </form>
@@ -120,7 +153,7 @@ export default class Book extends React.Component {
                                     <div className="t336__title t-title t-title_md" field="title">
                                         <div className="book_description">
                                             <blockquote className="blockquote-reverse">
-                                                <p>{this.state.name} ({this.getPages()})</p>
+                                                <p className="jello">{this.state.name} ({this.getPages()})</p>
                                                 <footer>{this.state.author}</footer>
                                             </blockquote>
                                         </div>    
