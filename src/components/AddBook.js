@@ -27,7 +27,7 @@ export default class AddBook extends React.Component {
 
         $.ajax({
             type: "POST",
-            url: "https://localhost:44326/api/books",
+            url: "https://reading-organizer.azurewebsites.net/api/books",
             data: JSON.stringify(body),
             dataType: "json",
             contentType: "application/json",

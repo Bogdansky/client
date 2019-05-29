@@ -18,7 +18,7 @@ export default class Library extends React.Component {
         this.changeState = this.changeState.bind(this);
         this.add = this.add.bind(this);
 
-        fetch('https://localhost:44326/api/books')
+        fetch('https://reading-organizer.azurewebsites.net/api/books')
             .then(response => response.json())
             .then(data => {
                 console.log(data);

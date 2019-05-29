@@ -78,7 +78,7 @@ export default class Progress extends React.Component{
 
     updateProgress(options) {
         try {
-            const url = `https://localhost:44326/api/users/${this.state.userId}/books/${this.state.bookId}/progress/${this.state.id}`;
+            const url = `https://reading-organizer.azurewebsites.net/api/users/${this.state.userId}/books/${this.state.bookId}/progress/${this.state.id}`;
             fetch(url, options)
                 .then(res => res.json())
                 .then(res => {
@@ -120,7 +120,7 @@ export default class Progress extends React.Component{
 
     updateTask(options) {
         try {
-            const url = `https://localhost:44326/api/tasks/${this.state.task.id}`;
+            const url = `https://reading-organizer.azurewebsites.net/api/tasks/${this.state.task.id}`;
             fetch(url, options)
                 .then(res => res.json())
                 .then(res => {
