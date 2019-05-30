@@ -29,7 +29,7 @@ export class SignUp extends React.Component {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                mode: 'cors',
+                mode: 'no-cors',
                 body
             };
             fetch(`https://reading-organizer.azurewebsites.net/api/users/signup`, options)
