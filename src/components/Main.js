@@ -69,12 +69,10 @@ export class Main extends React.Component {
 
         return this.state.bookProgress.length == 0
             ?
-            (
-                <div>
-                    You not reading anything yet. Maybe you would want to choose some from this.
+            <div>
+                You not reading anything yet. Maybe you would want to choose some from this.
                     <Library key={new Date().getMilliseconds()} />
-                </div>
-            )
+            </div>
             :
             <div id="boards">
                 {this.state.bookProgress.map(p => {

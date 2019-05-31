@@ -46,12 +46,12 @@ export default class AddBook extends React.Component {
                         <small id="emailHelp" className="form-text text-muted">Enter name of book there</small>
                     </div>
                     <div className="col">
-                        <label htmlFor="inputAuthor">Number of pages</label>
+                        <label htmlFor="inputAuthor">Author</label>
                         <input type="text" className="form-control" id="inputAuthor" name="Author" placeholder="Name" />
                         <small id="emailHelp" className="form-text text-muted">Enter author of book there</small>
                     </div>
                     <div className="col">
-                        <label htmlFor="inputNumber">Author</label>
+                        <label htmlFor="inputNumber">Number of pages</label>
                         <input type="number" min="1" className="form-control" id="inputPages" name="NumberOfPages" placeholder="111" />
                         <small className="form-text text-muted">Number of pages</small>
                     </div>
