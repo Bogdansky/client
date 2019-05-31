@@ -31,7 +31,7 @@ export class Main extends React.Component {
             headers: authorizationHeader
         };
 
-        fetch(`https://localhost:44326/api/users/${this.state.userId}/books`, options)
+        fetch(`https://reading-organizer.azurewebsites.net/api/users/${this.state.userId}/books`, options)
             .then(response => {
                 if (response.status > 399) {
                     this.handleError(response.status, response.statusText);
