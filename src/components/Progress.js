@@ -147,11 +147,11 @@ export default class Progress extends React.Component{
     render() {
         return (
             <div className="form-inline">
-                <input className="form-control" type="date" value={this.state.day} onChange={this.handleChangeDate} disabled={this.state.done} />
-                <input type="number" className="pages form-control" onChange={this.handleChangePages} value={this.state.task.pages} disabled={this.state.done} />
                 <div className="form-check">
                     <input type="checkbox" className="todo__checkbox" onChange={this.handleChangeState} checked={this.state.done}/>
                 </div>
+                <input className="form-control" type="date" value={this.state.day} onChange={this.handleChangeDate} disabled={this.state.done} />
+                <input type="number" className="pages form-control" onChange={this.handleChangePages} value={this.state.task.pages} disabled={this.state.done} />
             </div>
         )
     }
