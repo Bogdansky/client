@@ -9,7 +9,7 @@ export class SignUp extends React.Component {
             password: "",
             tryPassword: "",
             error: false,
-            loggedIn: false
+            logged: false
         }
 
         this.onChange = this.onChange.bind(this);
@@ -84,7 +84,7 @@ export class SignUp extends React.Component {
         return this.state.error ?
             (<Redirect to='/error' />)
             :
-            this.state.loggedIn ?
+            this.state.logged ?
                 (<Redirect to='/' />)
                 :
             (
