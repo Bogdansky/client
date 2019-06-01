@@ -27,7 +27,7 @@ export class Home extends Component {
     return (
         <div>
             <h1>Hello{this.state.userId && this.state.userInfo ? this.state.userInfo.name && this.state.userInfo.surname ? `, ${this.state.userInfo.name} ${this.state.userInfo.surname}` : ', Unnamed User' : ', stranger'}!</h1>
-            {this.state.userId && !(this.state.userInfo.name && this.state.userInfo.surname) ?
+            {this.state.userId && !this.state.userInfo ?
                 <AddUserInfo setUserInfo={this.setUserInfo} /> : ""               
             }
       </div>
