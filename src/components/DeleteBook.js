@@ -29,7 +29,7 @@ export default class DeleteBook extends React.Component {
     deleteBook(id) {
         $.ajax({
             type: "DELETE",
-            url: `https://localhost:44326/api/books/${id}`,
+            url: `https://reading-organizer.azurewebsites.net/api/books/${id}`,
             contentType: "application/json",
             success: res => {
                 console.log(JSON.stringify(res));
