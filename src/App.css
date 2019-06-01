@@ -32,3 +32,8 @@
     transform: rotate(360deg);
   }
 }
+
+.modal-content {
+    background-color: black;
+    border: white 1px solid
+}

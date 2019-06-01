@@ -38,6 +38,7 @@ export class SignUp extends React.Component {
                     if (data.token) {
                         localStorage.setItem("userId", data.id);
                         localStorage.setItem("token", data.token);
+                        localStorage.setItem("userinfo", data.userInfo);
                         this.setState({ logged: true })
 
                     } else if (data.statusCode && data.message) {

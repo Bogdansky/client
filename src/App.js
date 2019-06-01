@@ -8,6 +8,7 @@ import { Main } from './components/Main';
 import { SignUp } from './components/SignUp'
 import { SignIn } from './components/SignIn'
 import { Error } from './components/Error'
+import './App.css'
 
 export default class App extends Component {
   static displayName = App.name;

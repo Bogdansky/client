@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { Route, Redirect } from 'react-router';
 import $ from 'jquery'
 import UpdateBook from './UpdateBook'
+import DeleteBook from './DeleteBook'
 import './Book.css'
 
 export default class Book extends React.Component {
@@ -28,6 +29,7 @@ export default class Book extends React.Component {
         this.changeNumber = this.changeNumber.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSaveCover = this.handleSaveCover.bind(this);
+        this.handleDeleteClick = this.handleDeleteClick.bind(this);
         this.letReadOrChangeMind = this.letReadOrChangeMind.bind(this);
     }
 
@@ -53,6 +55,10 @@ export default class Book extends React.Component {
     changeNumber(e) {
         e.preventDefault();
         this.setState({ days: e.target.value });
+    }
+
+    handleDeleteClick(e) {
+
     }
 
     handleSaveCover(e) {
@@ -109,7 +115,7 @@ export default class Book extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <table className="infobox">
                         <tbody>
-                            <tr className="header"><td colSpan={2}>{this.state.name}</td></tr>
+                            <tr className="header"><td>{this.state.name}</td></tr>
                             <tr className="headerImage">
                                 <td colSpan={2}>
                                     <a onClick={this.letReadOrChangeMind} target="_blank"><img src={this.state.cover} /></a>
@@ -128,13 +134,15 @@ export default class Book extends React.Component {
                                 <td>
                                     <input className="form-control" type="number" min={1} max={this.state.pages} value={this.state.days} onChange={this.changeNumber} />
                                 </td>
-                             </tr>
+                            </tr>
                             <tr>
-                                    <td><button className="btn btn-warning">Read</button></td>
-                                    {!this.state.cover ?
-                                        <td>
-                                            <UpdateBook setCover={this.setCover} handleSaveCover={this.handleSaveCover} />
-                                        </td> : ""}
+                                <td colSpan={2}>
+                                    <div className="btn-group">
+                                        <button className="btn btn-warning">Read</button>
+                                        <UpdateBook setCover={this.setCover} exist={Boolean(this.state.cover)} handleSaveCover={this.handleSaveCover} />
+                                        <DeleteBook bookId={this.state.id} remove={this.props.remove} />
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
