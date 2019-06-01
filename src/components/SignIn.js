@@ -39,6 +39,7 @@ export class SignIn extends React.Component {
                 if (data.token) {
                     localStorage.setItem("userId", data.id);
                     localStorage.setItem("token", data.token);
+                    localStorage.setItem("userinfo", data.userInfo);
                     this.setState({ loggedIn: true });
 
                 } else if (data.statusCode && data.message) {
@@ -82,20 +83,18 @@ export class SignIn extends React.Component {
                 (<Redirect to='/' />)
             : 
             (
-                <div className="container h-100">
-                    <div className="row h-100 justify-content-center align-items-center">
-                        <form className="col-12" onSubmit={this.handleSubmit}>
-                            <div className="form-group">
-                                <label className="form-text text-muted">Email</label>
-                                <input type="email" className="form-control" value={this.state.email} onChange={this.onChange} placeholder="example@mail.com" required />
-                            </div>
-                            <div className="form-group">
-                                <label className="form-text text-muted">Password</label>
-                                <input type="password" className="form-control" value={this.state.password} onChange={this.onChange} placeholder="*******" required />
-                            </div>
-                            <button type="submit" className="btn btn-outline-primary">Log in</button>
-                        </form>
-                    </div>
+                <div className="row h-100 justify-content-center align-items-center">
+                    <form className="col-12" onSubmit={this.handleSubmit}>
+                        <div className="form-group">
+                            <label className="form-text text-muted">Email</label>
+                            <input type="email" className="form-control" value={this.state.email} onChange={this.onChange} placeholder="example@mail.com" required />
+                        </div>
+                        <div className="form-group">
+                            <label className="form-text text-muted">Password</label>
+                            <input type="password" className="form-control" value={this.state.password} onChange={this.onChange} placeholder="*******" required />
+                        </div>
+                        <button type="submit" className="btn btn-outline-primary">Log in</button>
+                    </form>
                 </div>
             );
     }
