@@ -44,7 +44,7 @@ export default class UpdateBook extends React.Component {
     render() {
         return (
             <Fragment>
-                <a className="btn btn-warning" onClick={this.handleOpen}>Add cover</a>
+                <a className="btn btn-warning" onClick={this.handleOpen}>{this.props.exist ? "Update cover" : "Add cover"}</a>
                 <Modal show={this.state.show}>
                     <Modal.Header>
                         <h1>{this.state.url ? "Enter a url of cover" : "Upload cover"}</h1>
