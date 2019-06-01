@@ -15,8 +15,8 @@ export default class Library extends React.Component {
             books: []
         }
 
-        this.changeState = this.changeState.bind(this);
         this.add = this.add.bind(this);
+        this.remove = this.remove.bind(this);
 
         fetch('https://localhost:44326/api/books')
             .then(response => response.json())
@@ -26,20 +26,17 @@ export default class Library extends React.Component {
             })
     }
 
-    changeState(e) {
-        e.preventDefault();
-        if (e.target.id == 'books-tab') {
-            $("#books").css("display", "inherit");
-            $("#add-book").css("display", "none");
-        } else {
-            $("#books").css("display", "none");
-            $("#add-book").css("display", "inherit");
-        }
-    }
-
     add(book) {
         let books = this.state.books;
+        console.log(JSON.stringify(book)+' added');
         books.push(book);
+        this.setState({ books: books });
+    }
+
+    remove(book) {
+        let books = this.state.books;
+        console.log(JSON.stringify(book) + ' removed');
+        delete books[books.lastIndexOf(book)];
         this.setState({ books: books });
     }
 
@@ -47,22 +44,13 @@ export default class Library extends React.Component {
         return (
             <div className="container h-100">
                 <div className="row">
-                    <div className="btn-group">
-                        <button className="btn btn-warning" id="books-tab" onClick={this.changeState}>Books</button>
-                        <button className="btn btn-warning" id="add-books-tab" onClick={this.changeState}>Add book</button>
-                    </div>
+                    <AddBook add={this.add}/>
                 </div>
-                <div className="row">
-                    <div className="row" id="books" style={{ display: 'line' }}>
-                        {this.state.books.map((b, index) => {
-                            return <Book key={b.id} {...b} />
-                        })}
-                    </div>
-                    <div className="row" id="add-book" style={{display: 'none'}}>
-                        <AddBook add={this.add}/>
-                    </div>
+                <div className="row" style={{ display: 'line' }}>
+                    {this.state.books.map((b, index) => {
+                        return <Book key={b.id} {...b} remove={this.remove} />
+                    })}
                 </div>
-                    <button></button>
             </div>
             )
     }
