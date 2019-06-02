@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router';
+import { Redirect } from 'react-router';
 import Library from './Library'
 import Board from './Board'
 import './Main.css'
@@ -19,11 +19,12 @@ export class Main extends React.Component {
 
         this.loadProgress = this.loadProgress.bind(this);
         this.handleError = this.handleError.bind(this);
+        this.changeOrderOfSorting = this.changeOrderOfSorting.bind(this);
 
         this.loadProgress();
     }
 
-    loadProgress() {
+    loadProgress(sortBy = "name") {
         let authorizationHeader = { "Authorization": `Bearer ${this.state.token}` };
         let options = {
             method: "GET",
@@ -31,7 +32,7 @@ export class Main extends React.Component {
             headers: authorizationHeader
         };
 
-        fetch(`https://reading-organizer.azurewebsites.net/api/users/${this.state.userId}/books`, options)
+        fetch(`https://localhost:44326/api/users/${this.state.userId}/books?sort=${sortBy}`, options)
             .then(response => {
                 if (response.status > 399) {
                     this.handleError(response.status, response.statusText);
@@ -56,6 +57,10 @@ export class Main extends React.Component {
             .catch(error => console.log(error));    
     }
 
+    changeOrderOfSorting(e) {
+        this.loadProgress(e.target.value);
+    }
+
     handleError(statusCode, message) {
         localStorage.setItem("statusCode", statusCode);
         localStorage.setItem("message", message);
@@ -75,6 +80,17 @@ export class Main extends React.Component {
             </div>
             :
             <div id="boards">
+                <div className="d-flex">
+                    <label style={{marginRight: '10px'}}>Sort by</label>
+                    <div className="custom-control custom-radio">
+                        <input id="sortname" type="radio" className="custom-control-input" name="sortorder" value="name" onClick={this.changeOrderOfSorting} defaultChecked />
+                        <label className="custom-control-label" htmlFor="sortname">Book name</label>
+                    </div>
+                    <div className="custom-control custom-radio">
+                        <input id="sortprogress" type="radio" className="custom-control-input" name="sortorder" value="progress" onClick={this.changeOrderOfSorting}/>
+                        <label className="custom-control-label" htmlFor="sortprogress">Read progress</label>
+                    </div>
+                </div>
                 {this.state.bookProgress.map(p => {
                     return <Board key={p.book.id} userId={this.state.userId} book={p.book} progress={p.progress} />
                 })}
