@@ -25,7 +25,7 @@ export default class AddBook extends React.Component {
         e.preventDefault();
         $.ajax({
             type: "GET",
-            url: `https://localhost:44326/api/users/${this.state.userId}/stats`,
+            url: `https://reading-organizer.azurewebsites.net/api/users/${this.state.userId}/stats`,
             dataType: "json",
             contentType: "application/json",
             success: res => {
