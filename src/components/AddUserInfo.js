@@ -56,7 +56,10 @@ export default class AddUserInfo extends Component {
         fetch(`https://localhost:44326/api/userinfo/${userId}`, options)
             .then(res => res.json())
             .then(res => {
-                this.setState({show: false}, this.props.setUserInfo(res));
+                if (res.statusCode) {
+                    res = null;
+                }
+                this.setState({ show: false }, this.props.setUserInfo(res));
             })
             .catch(error => {
                 console.log(error);
