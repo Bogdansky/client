@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect } from 'react-router';
+import { Redirect } from 'react-router'
 import Library from './Library'
 import Board from './Board'
 import './Main.css'
@@ -69,7 +69,7 @@ export class Main extends React.Component {
 
     render() {
         if (this.state.error) return (
-            <Redirect to='/error' />
+            <Redirect to='/login' />
         );
 
         return this.state.bookProgress.length == 0

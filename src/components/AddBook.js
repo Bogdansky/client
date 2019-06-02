@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import $ from 'jquery'
 import { Modal } from 'react-bootstrap'
+import { Redirect } from 'react-router'
 
 export default class AddBook extends React.Component {
     static displayName = AddBook.name;
@@ -51,7 +52,10 @@ export default class AddBook extends React.Component {
     }
 
     render() {
-        return (
+        return !localStorage.getItem("userId") ?
+            <Redirect to="/login" />
+            :
+        (
             <Fragment>
                 <button className="btn btn-warning" id="add-books-tab" onClick={this.handleOpen}>Add book</button>
                 <Modal show={this.state.show}>

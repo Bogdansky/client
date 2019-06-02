@@ -18,12 +18,18 @@ export default class Library extends React.Component {
         this.add = this.add.bind(this);
         this.remove = this.remove.bind(this);
 
-        fetch('https://reading-organizer.azurewebsites.net/api/books')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                this.setState({ books: data });
-            })
+        try {
+            fetch('https://reading-organizer.azurewebsites.net/api/books')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    this.setState({ books: data });
+                })
+                .catch(e =>{ console.error(e) })
+        }
+        catch(e){
+            console.error(e);
+        }
     }
 
     add(book) {
