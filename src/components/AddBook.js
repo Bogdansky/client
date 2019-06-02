@@ -54,7 +54,7 @@ export default class AddBook extends React.Component {
         return (
             <Fragment>
                 <button className="btn btn-warning" id="add-books-tab" onClick={this.handleOpen}>Add book</button>
-                <Modal show={this.state.show} className="border border-light rounded">
+                <Modal show={this.state.show}>
                     <Modal.Header>
                         <h3>Enter the info in fields and click Save</h3>
                     </Modal.Header>
