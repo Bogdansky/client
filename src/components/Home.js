@@ -18,8 +18,8 @@ export class Home extends Component {
 
     setUserInfo(info) {
         console.log(info.name);
-        this.setState({ userInfo: info });
         localStorage.setItem('userinfo', JSON.stringify(info));
+        this.setState({ userInfo: info });
     }
 
     render() {
