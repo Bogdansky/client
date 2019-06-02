@@ -56,13 +56,23 @@ export class SignUp extends React.Component {
                     }
                 })
                 .catch(error => {
-                    this.handleError(666, "Registration error");
                     console.log(error);
+                    this.setState({
+                        error: {
+                            message: "Some problems with connection",
+                            statusCode: 500
+                        }
+                    });
                 });
         }
         catch (e) {
-            this.handleError(666, e.message);
             console.log('Ошибка');
+            this.setState({
+                error: {
+                    message: "Some problems with connection",
+                    statusCode: 500
+                }
+            });
         }
     }
 

@@ -30,6 +30,14 @@ export class Home extends Component {
             {this.state.userId && !this.state.userInfo ?
                 <AddUserInfo setUserInfo={this.setUserInfo} /> : ""               
             }
+            <div>
+                This application is task manager for those who love to read books and wants to organize their enjoying.<br/>
+                To start you may to click on "Library" to choose book what you want to read. Or click on "My books" if you choice book.<br/>
+                Of course, you need to log in or sign up in the system to track your progress at reading books.
+                Your progress you can watch in section what calls "My books".
+                There are all books that you start to read. System automaticaly build your plan so you don't care about it.
+                If you entered in "My books" you can see covers of books. Click on book which you like to read, enter number of days and click "Read".
+            </div>
       </div>
     );
   }

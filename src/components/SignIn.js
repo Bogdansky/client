@@ -48,9 +48,21 @@ export class SignIn extends React.Component {
             })
             .catch(error => {
                 console.log(error);
+                    this.setState({
+                        error: {
+                            message: "Some problems with connection",
+                            statusCode: 500
+                        }
+                    });
             });
         }
-        catch(e){
+        catch (e) {
+            this.setState({
+                error: {
+                    message: "Some problems with connection",
+                    statusCode: 500
+                }
+            });
             console.log('ќшибка');
         }
     }
