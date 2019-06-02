@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddUserInfo from './AddUserInfo'
+import Stats from './Statistics'
 
 export class Home extends Component {
   static displayName = Home.name;
@@ -27,9 +28,12 @@ export class Home extends Component {
     return (
         <div>
             <h1>Hello{this.state.userId && this.state.userInfo ? this.state.userInfo.name && this.state.userInfo.surname ? `, ${this.state.userInfo.name} ${this.state.userInfo.surname}` : ', Unnamed User' : ', stranger'}!</h1>
-            {this.state.userId && !this.state.userInfo ?
-                <AddUserInfo setUserInfo={this.setUserInfo} /> : ""               
-            }
+            <div className="btn-group">
+                {this.state.userId && !this.state.userInfo ?
+                    <AddUserInfo setUserInfo={this.setUserInfo} /> : ""
+                }
+                <Stats />
+            </div>
             <div>
                 This application is task manager for those who love to read books and wants to organize their enjoying.<br/>
                 To start you may to click on "Library" to choose book what you want to read. Or click on "My books" if you choice book.<br/>
