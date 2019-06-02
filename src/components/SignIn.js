@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router'
-import $ from 'jquery'
 import './Form.css'
 
 export class SignIn extends React.Component {
