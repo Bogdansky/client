@@ -32,7 +32,7 @@ export class SignIn extends React.Component {
                 mode: 'cors',
                 body
             };
-            fetch(`https://reading-organizer.azurewebsites.net/api/users/signin`, options)
+            fetch(`https://localhost:44326/api/users/signin`, options)
             .then(response => response.json())
             .then(data => {
                 console.log(data);

@@ -39,7 +39,7 @@ export default class Book extends React.Component {
 
     getReadLink() {
         let userId = localStorage.getItem("userId") || 0;
-        return `https://reading-organizer.azurewebsites.net/api/users/${userId}/books/${this.state.id}?days=${this.state.days}`;
+        return `https://localhost:44326/api/users/${userId}/books/${this.state.id}?days=${this.state.days}`;
     }
 
     setCover(newCover) {
@@ -70,7 +70,7 @@ export default class Book extends React.Component {
 
         $.ajax({
             type: "PUT",
-            url: `https://reading-organizer.azurewebsites.net/api/books/${this.state.id}/cover${cover ? `?cover=${cover}` : ""}`,
+            url: `https://localhost:44326/api/books/${this.state.id}/cover${cover ? `?cover=${cover}` : ""}`,
             data: form,
             processData: false,
             contentType: false,
