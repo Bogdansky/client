@@ -8,7 +8,7 @@ export class Home extends Component {
         super(props);
 
         this.state = {
-            userInfo: localStorage.getItem('userinfo'),
+            userInfo: JSON.parse(localStorage.getItem('userinfo')),
             userId: localStorage.getItem('userId'),
             token: localStorage.getItem('token')
         };

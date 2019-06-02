@@ -1,5 +1,7 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router'
+import $ from 'jquery'
+import './Form.css'
 
 export class SignIn extends React.Component {
     constructor(props) {
@@ -8,12 +10,11 @@ export class SignIn extends React.Component {
             email: "",
             password: "",
             loggedIn: false,
-            error: false
+            error: {}
         }
 
         this.onChange = this.onChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleError = this.handleError.bind(this);
     }
 
     handleSubmit(e) {
@@ -39,27 +40,20 @@ export class SignIn extends React.Component {
                 if (data.token) {
                     localStorage.setItem("userId", data.id);
                     localStorage.setItem("token", data.token);
-                    localStorage.setItem("userinfo", data.userInfo);
+                    localStorage.setItem("userinfo", JSON.stringify(data.userInfo));
                     this.setState({ loggedIn: true });
 
                 } else if (data.statusCode && data.message) {
-                    this.handleError(data.statusCode, data.message);
+                    this.setState({error: data})
                 }
             })
             .catch(error => {
                 console.log(error);
-                this.handleError(666, "Connection error. Maybe you or server was not connected to the Internet.");
             });
         }
         catch(e){
             console.log('ќшибка');
         }
-    }
-
-    handleError(statusCode, message) {
-        localStorage.setItem("statusCode", statusCode);
-        localStorage.setItem("message", statusCode == 400 ? `${message}. Maybe, incorrect email or password` :  message);
-        this.setState({ error: true });
     }
 
     onChange(e) {
@@ -76,26 +70,19 @@ export class SignIn extends React.Component {
     }
 
     render() {
-        return this.state.error ?
-            (<Redirect to='/error' />)
-            :
-            this.state.loggedIn ?
-                (<Redirect to='/' />)
+        return this.state.loggedIn ?
+            (<Redirect to='/' />)
             : 
             (
-                <div className="row h-100 justify-content-center align-items-center">
-                    <form className="col-12" onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <label className="form-text text-muted">Email</label>
-                            <input type="email" className="form-control" value={this.state.email} onChange={this.onChange} placeholder="example@mail.com" required />
-                        </div>
-                        <div className="form-group">
-                            <label className="form-text text-muted">Password</label>
-                            <input type="password" className="form-control" value={this.state.password} onChange={this.onChange} placeholder="*******" required />
-                        </div>
-                        <button type="submit" className="btn btn-outline-primary">Log in</button>
-                    </form>
-                </div>
+                <form className="box" onSubmit={this.handleSubmit}>
+                    <h1>Login</h1>
+                    <input type="email" value={this.state.email} onChange={this.onChange} placeholder="example@mail.com" required />
+                    <input type="password" value={this.state.password} onChange={this.onChange} placeholder="password" required />
+                    <div className="error" hidden={!this.state.error.message}>
+                        <p>{this.state.error.statusCode}. {this.state.error.message}</p>
+                    </div>
+                    <button type="submit">Log in</button>
+                </form>
             );
     }
 }
