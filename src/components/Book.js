@@ -65,7 +65,7 @@ export default class Book extends React.Component {
 
         $.ajax({
             type: "PUT",
-            url: `https://localhost:44326/api/books/${this.state.id}/cover${cover ? `?cover=${cover}` : ""}`,
+            url: `https://reading-organizer.azurewebsites.net/api/books/${this.state.id}/cover${cover ? `?cover=${cover}` : ""}`,
             data: form,
             processData: false,
             contentType: false,
