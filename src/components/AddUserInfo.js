@@ -40,7 +40,6 @@ export default class AddUserInfo extends Component {
     }
 
     handleSave() {
-        debugger;
         let body = JSON.stringify({
             "name": this.state.name,
             "surname": this.state.surname

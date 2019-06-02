@@ -1,5 +1,7 @@
 import React from 'react'
-import {Route, Redirect } from 'react-router'
+import { Route, Redirect } from 'react-router'
+import './Form.css'
+import $ from 'jquery'
 
 export class SignUp extends React.Component {
     constructor(props) {
@@ -8,7 +10,7 @@ export class SignUp extends React.Component {
             email: "",
             password: "",
             tryPassword: "",
-            error: false,
+            error: {},
             loggedIn: false
         }
 
@@ -19,6 +21,15 @@ export class SignUp extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         try {
+            if (this.state.password != this.state.tryPassword) {
+                this.setState({
+                    error: {
+                        statusCode: 1,
+                        message: "Passwords must match"
+                    }
+                });
+                return;
+            }
             let body = JSON.stringify({
                 "email": this.state.email,
                 "password": this.state.password
@@ -42,7 +53,7 @@ export class SignUp extends React.Component {
                         this.setState({ logged: true })
 
                     } else if (data.statusCode && data.message) {
-                        this.handleError(data.statusCode, data.message);
+                        this.setState({ error: data });
                     }
                 })
                 .catch(error => {
@@ -54,12 +65,6 @@ export class SignUp extends React.Component {
             this.handleError(666, e.message);
             console.log('Ошибка');
         }
-    }
-
-    handleError(statusCode, message) {
-        localStorage.setItem("statusCode", statusCode);
-        localStorage.setItem("message", message);
-        this.setState({ error: true });
     }
 
     onChange(e) {
@@ -82,32 +87,20 @@ export class SignUp extends React.Component {
     }
 
     render() {
-        return this.state.error ?
-            (<Redirect to='/error' />)
-            :
-            this.state.loggedIn ?
-                (<Redirect to='/' />)
+        return this.state.loggedIn ?
+                <Redirect to='/' />
                 :
-            (
-            <div className="container h-100">
-                <div className="row h-100 justify-content-center align-items-center">
-                    <form className="col-12" onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <label className="form-text text-muted">Email</label>
-                            <input type="email" className="form-control" value={this.state.email} onChange={this.onChange} placeholder="example@mail.com" required />
-                        </div>
-                        <div className="form-group">
-                            <label className="form-text text-muted">Password</label>
-                            <input type="password" className="form-control" name="first_password" value={this.state.password} onChange={this.onChange} placeholder="*******" required />
-                        </div>
-                        <div className="form-group">
-                            <label className="form-text text-muted">Repeat password</label>
-                            <input type="password" className="form-control" name="second_password" value={this.state.tryPassword} onChange={this.onChange} placeholder="*******" />
-                        </div>
-                        <button type="submit" className="btn btn-outline-primary">Sign up</button>
-                    </form>
-                </div>
-            </div>
+                (
+                <form className="box" onSubmit={this.handleSubmit}>
+                    <h1>Sign up</h1>
+                    <input type="email" value={this.state.email} onChange={this.onChange} placeholder="example@mail.com" required />
+                    <input type="password" name="first_password" value={this.state.password} onChange={this.onChange} placeholder="password" required />
+                    <input type="password" name="second_password" value={this.state.tryPassword} onChange={this.onChange} placeholder="repeat password" />
+                    <div className="error" hidden={!this.state.error.message}>
+                        <p>{this.state.error.statusCode}. {this.state.error.message}</p>
+                    </div>
+                    <button type="submit">Sign up</button>
+                </form>
             );
     }
 }
