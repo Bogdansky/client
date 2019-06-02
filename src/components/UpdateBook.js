@@ -33,7 +33,8 @@ export default class UpdateBook extends React.Component {
     handleClick(e) {
         switch (e.target.id) {
             case "save":
-                this.setState(this.baseState, this.props.setCover(this.state.cover));
+                this.props.handleSaveCover(e);
+                this.setState({ show: false});
                 break;
             case "cancel":
                 this.setState({ show: false });
@@ -70,7 +71,6 @@ export default class UpdateBook extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-primary" onClick={this.props.handleSaveCover}>Submit</button>
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
