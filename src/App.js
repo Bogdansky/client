@@ -3,7 +3,6 @@ import { Route, Redirect } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import Library from './components/Library';
-import { Counter } from './components/Counter';
 import { Main } from './components/Main';
 import { SignUp } from './components/SignUp'
 import { SignIn } from './components/SignIn'
