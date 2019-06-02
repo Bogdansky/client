@@ -52,10 +52,7 @@ export default class AddBook extends React.Component {
     }
 
     render() {
-        return !localStorage.getItem("userId") ?
-            <Redirect to="/login" />
-            :
-        (
+        return (
             <Fragment>
                 <button className="btn btn-warning" id="add-books-tab" onClick={this.handleOpen}>Add book</button>
                 <Modal show={this.state.show}>

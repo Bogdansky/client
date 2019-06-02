@@ -23,7 +23,6 @@ export default class App extends Component {
       <Layout>
             <Route exact path='/' component={Home} />
             <Route path='/boards' component={Main} />
-            <Route path='/counter' component={Counter} />
             <Route path='/signup' component={SignUp} />
             <Route path='/signin' component={SignIn} />
             <Route path='/error' component={Error} />

@@ -69,7 +69,7 @@ export class Main extends React.Component {
 
     render() {
         if (this.state.error) return (
-            <Redirect to='/login' />
+            <Redirect to='/signin' />
         );
 
         return this.state.bookProgress.length == 0
