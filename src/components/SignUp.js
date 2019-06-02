@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router'
 import './Form.css'
-import $ from 'jquery'
 
 export class SignUp extends React.Component {
     constructor(props) {
