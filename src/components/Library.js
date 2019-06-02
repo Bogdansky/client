@@ -18,7 +18,7 @@ export default class Library extends React.Component {
         this.add = this.add.bind(this);
         this.remove = this.remove.bind(this);
 
-        fetch('https://localhost:44326/api/books')
+        fetch('https://reading-organizer.azurewebsites.net/api/books')
             .then(response => response.json())
             .then(data => {
                 console.log(data);

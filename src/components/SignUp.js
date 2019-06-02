@@ -42,7 +42,7 @@ export class SignUp extends React.Component {
                 mode: 'cors',
                 body
             };
-            fetch(`https://localhost:44326/api/users/signup`, options)
+            fetch(`https://reading-organizer.azurewebsites.net/api/users/signup`, options)
                 .then(response => response.json())
                 .then(data => {
                     if (data.token) {

@@ -53,7 +53,7 @@ export default class AddUserInfo extends Component {
             body
         };
         var userId = localStorage.getItem('userId') || 0;
-        fetch(`https://localhost:44326/api/userinfo/${userId}`, options)
+        fetch(`https://reading-organizer.azurewebsites.net/api/userinfo/${userId}`, options)
             .then(res => res.json())
             .then(res => {
                 if (res.statusCode) {
