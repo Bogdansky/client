@@ -29,7 +29,6 @@ export default class Book extends React.Component {
         this.changeNumber = this.changeNumber.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSaveCover = this.handleSaveCover.bind(this);
-        this.handleDeleteClick = this.handleDeleteClick.bind(this);
         this.letReadOrChangeMind = this.letReadOrChangeMind.bind(this);
     }
 
@@ -55,10 +54,6 @@ export default class Book extends React.Component {
     changeNumber(e) {
         e.preventDefault();
         this.setState({ days: e.target.value });
-    }
-
-    handleDeleteClick(e) {
-
     }
 
     handleSaveCover(e) {
@@ -115,7 +110,7 @@ export default class Book extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <table className="infobox">
                         <tbody>
-                            <tr className="header"><td>{this.state.name}</td></tr>
+                            <tr className="header"><td colSpan={2}>{this.state.name}</td></tr>
                             <tr className="headerImage">
                                 <td colSpan={2}>
                                     <a onClick={this.letReadOrChangeMind} target="_blank"><img src={this.state.cover} /></a>
