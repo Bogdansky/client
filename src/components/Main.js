@@ -25,6 +25,16 @@ export class Main extends React.Component {
     }
 
     loadProgress(sortBy = "name") {
+        if (!this.state.userId || this.state.userId < 1) {
+            this.setState({
+                error: {
+                    statusCode: 401,
+                    message: "User is not authorized"
+                }
+            });
+            return;
+        }
+
         let authorizationHeader = { "Authorization": `Bearer ${this.state.token}` };
         let options = {
             method: "GET",
