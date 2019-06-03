@@ -41,13 +41,13 @@ export default class AddBook extends React.Component {
         }
 
         if (!name || name == "") {
-            $("error_message").text("Name must be not empty");
+            $("#error_message").text("Name must be not empty");
             return;
         } else if (!author || author == "") {
-            $("error_message").text("Author must be not empty");
+            $("#error_message").text("Author must be not empty");
             return;
         } else if (!pages) {
-            $("error_message").text("Number of pages must be not empty");
+            $("#error_message").text("Number of pages must be not empty");
             return;
         }
 
