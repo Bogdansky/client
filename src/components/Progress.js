@@ -59,6 +59,10 @@ export default class Progress extends React.Component{
 
     handleChangeDate(e) {
         if (this.state.day != e.target.value) {
+            if (!e.target.value || e.target.value == "") {
+                e.target.value = this.state.day;
+                return;
+            }
             const options = {
                 method: "PUT",
                 mode: "cors",
