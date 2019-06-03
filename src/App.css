@@ -35,8 +35,17 @@
 }
 
 .modal-content {
-    background-color: black;
-    border: white 1px solid
+    background-color: #fff;
+    border: 1px solid black
+}
+
+.modal-content.btn {
+    border: 2px solid grey;
+    background-color: white
+}
+
+.modal-content.form-control{
+    border: 2px solid 
 }
 
 .error {
@@ -47,3 +56,12 @@
 .mytext {
     color:#00DFC8 
 }
+
+.btn-special {
+    background-color: #FFE0B2;
+    cursor: pointer
+}
+
+    .btn-special:hover {
+        background-color: #FFF3E0;
+    }

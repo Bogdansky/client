@@ -53,7 +53,7 @@ export default class UpdateBook extends React.Component {
                     <Modal.Body>
                         <div style={{ paddingLeft: "10px", paddingTop: "10px" }}>
                             <h4>Cover {this.state.cover ? `(current cover: ${this.state.cover})` : ""}</h4>
-                            <div className="form-row border border-light rounded">
+                            <div className="form-row">
                                 <div className="col">
                                     <div className="form-check form-check-inline">
                                         <input type="checkbox" className="todo__checkbox" id="byUpload" value={this.state.byUrl} onChange={this.handleMethod} />
@@ -63,11 +63,11 @@ export default class UpdateBook extends React.Component {
                                 <div className="col">
                                     <div className="form-group" id="byUrl" hidden={!(this.state.byUrl)}>
                                         <input type="url" className="form-control" name="Cover" id="inputCover" placeholder="https://example.com/1.jpg" />
-                                        <small className="form-text text-muted">Enter the url of the picture</small>
+                                        <small className="form-text">Enter the url of the picture</small>
                                     </div>
                                     <div className="form-group" id="byUpload" hidden={this.state.byUrl}>
                                         <input type="file" className="form-control-file" name="File" id="uploadFile" />
-                                        <small className="form-text text-muted">I think you know</small>
+                                        <small className="form-text">I think you know</small>
                                     </div>
                                 </div>
                             </div>

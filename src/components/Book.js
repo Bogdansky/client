@@ -156,8 +156,8 @@ export default class Book extends React.Component {
                                     <div className="t336__title t-title t-title_md" field="title">
                                         <div className="book_description">
                                             <blockquote className="blockquote-reverse">
-                                                <p className="jello">{this.state.name} ({this.getPages()})</p>
-                                                <footer>{this.state.author}</footer>
+                                                <p className="jello"><i>{this.state.name} ({this.getPages()})</i></p>
+                                                <footer className="jello-main"><i>{this.state.author}</i></footer>
                                             </blockquote>
                                         </div>    
                                     </div>

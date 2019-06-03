@@ -69,7 +69,7 @@ export default class AddUserInfo extends Component {
     render() {
         return (
             <Fragment>
-                <a className="btn btn-warning" onClick={this.handleOpen}>Rename</a>
+                <a className="btn btn-special" onClick={this.handleOpen}>Rename</a>
                 <Modal show={this.state.show}>
                     <Modal.Header>
                         <h3>Enter user information</h3>
@@ -77,11 +77,11 @@ export default class AddUserInfo extends Component {
                     <Modal.Body>
                         <form className="col-12" onSubmit={this.handleSubmit}>
                             <div className="form-group">
-                                <label className="form-text text-muted">Name</label>
+                                <label className="form-text">Name</label>
                                 <input type="text" className="form-control" name="name" value={this.state.name} onChange={this.onChange} placeholder="Name" required />
                             </div>
                             <div className="form-group">
-                                <label className="form-text text-muted">Surname</label>
+                                <label className="form-text">Surname</label>
                                 <input type="text" className="form-control" name="surname" value={this.state.surname} onChange={this.onChange} placeholder="Surname" required />
                             </div>
                         </form>

@@ -125,7 +125,7 @@ export default class AddBook extends React.Component {
     render() {
         return this.state.userId ? (
             <Fragment>
-                <button className="btn btn-warning" id="add-books-tab" onClick={this.handleOpen} disabled={!this.state.userId}>Show statistics</button>
+                <button className="btn btn-special" id="add-books-tab" onClick={this.handleOpen} disabled={!this.state.userId}>Show statistics</button>
                 <Modal show={this.state.show}>
                     <Modal.Header>
                         <h3>Reading statistics</h3>
