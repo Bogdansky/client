@@ -100,16 +100,18 @@ export class SignUp extends React.Component {
                 <Redirect to='/' />
                 :
                 (
-                <form className="box" onSubmit={this.handleSubmit}>
-                    <h1>Sign up</h1>
-                    <input type="email" value={this.state.email} onChange={this.onChange} placeholder="example@mail.com" required />
-                    <input type="password" name="first_password" value={this.state.password} onChange={this.onChange} placeholder="password" required />
-                    <input type="password" name="second_password" value={this.state.tryPassword} onChange={this.onChange} placeholder="repeat password" />
-                    <div className="error" hidden={!this.state.error.message}>
-                        <p>{this.state.error.statusCode}. {this.state.error.message}</p>
-                    </div>
-                    <button type="submit">Sign up</button>
-                </form>
+                <div className="pad">
+                    <form className="box" onSubmit={this.handleSubmit}>
+                        <h1>Sign up</h1>
+                        <input type="email" value={this.state.email} onChange={this.onChange} placeholder="example@mail.com" required />
+                        <input type="password" name="first_password" value={this.state.password} onChange={this.onChange} placeholder="password" required />
+                        <input type="password" name="second_password" value={this.state.tryPassword} onChange={this.onChange} placeholder="repeat password" />
+                        <div className="error" hidden={!this.state.error.message}>
+                            <p>{this.state.error.statusCode}. {this.state.error.message}</p>
+                        </div>
+                        <button className="btn btn-warning" type="submit">Sign up</button>
+                    </form>
+                </div>
             );
     }
 }

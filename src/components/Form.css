@@ -1,13 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 .box {
     width: 500px;
-    background-color: #FBFF00;
+    background-color: rgba(255,193,0,.9);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: inherit;
     text-align: center;
     border: 2px solid white;
-    border-radius: 35px
+    border-radius: 35px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    font-family: 'Montserrat', sans-serif;
 }
 
 .pad {
@@ -41,7 +45,7 @@
     padding: 14px 10px;
     width: 350px;
     outline: none;
-    color: white;
+    color: black;
     border-radius: 24px;
     transition: 0.25s;
 }
@@ -49,19 +53,20 @@
 .box input[type = "email"]:focus, .box input[type = "password"]:focus {
     width: 400px;
     border-color: #2ecc71;
+    background-color: #2ecc71
 }
 
     .box button {
         border: 0;
-        background: none;
+        /*background: #FFC107;*/
         display: block;
         margin: 20px auto;
         text-align: center;
-        border: 2px solid #007bff;
+        /*border: 2px solid #007bff;*/
         padding: 14px 40px 14px 40px;
         outline: none;
-        color: #007bff;
-        border-radius: 24px;
+        /*color: #007bff;
+        border-radius: 24px;*/
         transition: 0.25s;
         cursor: pointer;
     }
