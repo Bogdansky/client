@@ -83,7 +83,7 @@ export default class Book extends React.Component {
         };
         fetch(this.getReadLink(), options)
             .then(response => {
-                if (response > 399) {
+                if (response.status && response.status > 399) {
                     localStorage.setItem("statusCode", response.status);
                     localStorage.setItem("message", response.statusText);
                     this.setState({ error: true });
