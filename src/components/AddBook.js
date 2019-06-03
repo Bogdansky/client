@@ -40,6 +40,17 @@ export default class AddBook extends React.Component {
             "NumberOfPages": pages
         }
 
+        if (!name || name == "") {
+            $("error_message").text("Name must be not empty");
+            return;
+        } else if (!author || author == "") {
+            $("error_message").text("Author must be not empty");
+            return;
+        } else if (!pages) {
+            $("error_message").text("Number of pages must be not empty");
+            return;
+        }
+
         $.ajax({
             type: "POST",
             url: "https://reading-organizer.azurewebsites.net/api/books",
@@ -75,6 +86,9 @@ export default class AddBook extends React.Component {
                                 <label htmlFor="inputNumber">Number of pages</label>
                                 <input type="number" min="1" className="form-control" id="inputPages" name="NumberOfPages" placeholder="111" required />
                                 <small className="form-text text-muted">Number of pages</small>
+                            </div>
+                            <div id="errors">
+                                <p id="error_message"></p>
                             </div>
                         </form>
                     </Modal.Body>
