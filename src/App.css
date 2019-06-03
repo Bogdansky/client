@@ -1,6 +1,7 @@
 .App {
-  text-align: center;
-  overflow: auto;
+    text-align: center;
+    overflow: auto;
+    background-color: #00DFC8
 }
 
 .App-logo {
@@ -10,14 +11,14 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: #00ff90;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: #414042;
 }
 
 .App-link {
@@ -41,4 +42,8 @@
 .error {
     color: red;
     background: none
+}
+
+.mytext {
+    color:#00DFC8 
 }

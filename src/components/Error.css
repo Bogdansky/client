@@ -2,13 +2,12 @@
 
 * { padding: 0; margin: 0; }
 
-body, html
-{
-	font-family: "Droid Sans", arial, verdana, sans-serif;
-	font-weight: 700;
-	color: #ff6;
-	background-color: #000;
-	overflow: hidden;
+body, html {
+    font-family: "Droid Sans", arial, verdana, sans-serif;
+    font-weight: 700;
+    color: #414042 !important;
+    background-color: #CEFF9D;
+    overflow: hidden;
 }
 
 p#start
