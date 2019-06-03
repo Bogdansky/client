@@ -87,8 +87,8 @@ export default class AddUserInfo extends Component {
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <button className="btn btn-outline-primary" onClick={this.handleSave}>Save</button>
-                        <button className="btn btn-outline-danger" onClick={this.handleClose}>Cancel</button>
+                        <button className="btn btn-success" onClick={this.handleSave}>Save</button>
+                        <button className="btn btn-danger" onClick={this.handleClose}>Cancel</button>
                     </Modal.Footer>
                 </Modal>
             </Fragment>
