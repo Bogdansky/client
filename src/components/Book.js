@@ -145,7 +145,7 @@ export default class Book extends React.Component {
             )
             :
             (
-            <div className="t-col t-col_8 t-align_center t336__block t336__show_hover rounded">
+            <div className="t-col t-col_8 t-align_center t336__block t336__show_hover rounded shadow">
                 <a onClick={this.letReadOrChangeMind} target="_blank">
                     <div className="t336__table">
                         <div className="t336__cell t-align_center t-valign_middle">

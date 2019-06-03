@@ -1,14 +1,22 @@
 .box {
     width: 500px;
-    /*padding: 60px;*/
+    background-color: #FBFF00;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    background: none;
+    transform: inherit;
     text-align: center;
     border: 2px solid white;
-    border-radius: 45px
+    border-radius: 35px
+}
+
+.pad {
+    background: #F1F2F2;
+    width: 550px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 .box h1 {

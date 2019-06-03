@@ -85,15 +85,17 @@ export class SignIn extends React.Component {
             (<Redirect to='/' />)
             : 
             (
-                <form className="box" onSubmit={this.handleSubmit}>
-                    <h1>Login</h1>
-                    <input type="email" value={this.state.email} onChange={this.onChange} placeholder="example@mail.com" required />
-                    <input type="password" value={this.state.password} onChange={this.onChange} placeholder="password" required />
-                    <div className="error" hidden={!this.state.error.message}>
-                        <p>{this.state.error.statusCode}. {this.state.error.message}</p>
-                    </div>
-                    <button type="submit">Log in</button>
-                </form>
+                <div class="pad">
+                    <form className="box" onSubmit={this.handleSubmit}>
+                        <h1>Login</h1>
+                        <input type="email" value={this.state.email} onChange={this.onChange} placeholder="example@mail.com" required />
+                        <input type="password" value={this.state.password} onChange={this.onChange} placeholder="password" required />
+                        <div className="error" hidden={!this.state.error.message}>
+                            <p>{this.state.error.statusCode}. {this.state.error.message}</p>
+                        </div>
+                        <button type="submit">Log in</button>
+                    </form>
+                </div>
             );
     }
 }
