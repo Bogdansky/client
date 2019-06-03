@@ -60,7 +60,7 @@ export default class AddBook extends React.Component {
                         <h3>Enter the info in fields and click Save</h3>
                     </Modal.Header>
                     <Modal.Body>
-                        <div>
+                        <form>
                             <div className="col">
                                 <label htmlFor="inputName">Book name</label>
                                 <input type="text" className="form-control" id="inputName" name="Name" placeholder="Name" required/>
@@ -76,7 +76,7 @@ export default class AddBook extends React.Component {
                                 <input type="number" min="1" className="form-control" id="inputPages" name="NumberOfPages" placeholder="111" required />
                                 <small className="form-text text-muted">Number of pages</small>
                             </div>
-                        </div>
+                        </form>
                     </Modal.Body>
                     <Modal.Footer>
                         <button onClick={this.handleSubmit} className="btn btn-success">Save</button>
