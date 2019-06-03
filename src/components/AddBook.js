@@ -63,17 +63,17 @@ export default class AddBook extends React.Component {
                         <div>
                             <div className="col">
                                 <label htmlFor="inputName">Book name</label>
-                                <input type="text" className="form-control" id="inputName" name="Name" placeholder="Name" />
+                                <input type="text" className="form-control" id="inputName" name="Name" placeholder="Name" required/>
                                 <small id="emailHelp" className="form-text text-muted">Enter name of book</small>
                             </div>
                             <div className="col">
                                 <label htmlFor="inputAuthor">Author</label>
-                                <input type="text" className="form-control" id="inputAuthor" name="Author" placeholder="Name" />
+                                <input type="text" className="form-control" id="inputAuthor" name="Author" placeholder="Name" required />
                                 <small id="emailHelp" className="form-text text-muted">Enter author of book</small>
                             </div>
                             <div className="col">
                                 <label htmlFor="inputNumber">Number of pages</label>
-                                <input type="number" min="1" className="form-control" id="inputPages" name="NumberOfPages" placeholder="111" />
+                                <input type="number" min="1" className="form-control" id="inputPages" name="NumberOfPages" placeholder="111" required />
                                 <small className="form-text text-muted">Number of pages</small>
                             </div>
                         </div>
