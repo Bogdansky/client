@@ -41,8 +41,10 @@ export default class Library extends React.Component {
 
     remove(book) {
         let books = this.state.books;
+        debugger;
         console.log(JSON.stringify(book) + ' removed');
-        delete books[books.lastIndexOf(book)];
+        books.splice(books.indexOf(book), 1);
+        console.log(books);
         this.setState({ books: books });
     }
 
