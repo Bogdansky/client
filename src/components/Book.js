@@ -20,7 +20,8 @@ export default class Book extends React.Component {
             days: 1,
             wantsToRead: false,
             reading: false,
-            error: false
+            error: false,
+            deleted: false
         }
 
         this.getPages = this.getPages.bind(this);
@@ -28,6 +29,7 @@ export default class Book extends React.Component {
         this.getReadLink = this.getReadLink.bind(this);
         this.changeNumber = this.changeNumber.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleRemove = this.handleRemove.bind(this);
         this.handleSaveCover = this.handleSaveCover.bind(this);
         this.letReadOrChangeMind = this.letReadOrChangeMind.bind(this);
     }
@@ -75,6 +77,10 @@ export default class Book extends React.Component {
         })
     }
 
+    handleRemove(book) {
+        this.setState({ deleted: true }, this.props.remove(book));
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         let options = {
@@ -106,8 +112,8 @@ export default class Book extends React.Component {
             <Redirect to="/boards" />
             :
             this.state.wantsToRead ?
-            (
-                <form onSubmit={this.handleSubmit}>
+                (
+                <form onSubmit={this.handleSubmit} hidden={this.state.deleted}>
                     <table className="infobox">
                         <tbody>
                             <tr className="header"><td colSpan={2}>{this.state.name}</td></tr>
@@ -144,8 +150,8 @@ export default class Book extends React.Component {
                 </form>
             )
             :
-            (
-            <div className="t-col t-col_8 t-align_center t336__block t336__show_hover rounded shadow">
+                (
+            <div className="t-col t-col_8 t-align_center t336__block t336__show_hover rounded shadow" hidden={this.state.deleted}>
                 <a onClick={this.letReadOrChangeMind} target="_blank">
                     <div className="t336__table">
                         <div className="t336__cell t-align_center t-valign_middle">

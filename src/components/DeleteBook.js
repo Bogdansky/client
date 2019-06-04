@@ -22,7 +22,13 @@ export default class DeleteBook extends React.Component {
     }
 
     handleClick(e) {
-        this.deleteBook(this.props.bookId);
+        switch (e.target.id) {
+            case "yes":
+                this.deleteBook(this.props.bookId);
+                break;
+            case "no":
+                break;
+        }
         this.setState({ show: false });
     }
 

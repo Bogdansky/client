@@ -14,7 +14,7 @@ export class Main extends React.Component {
             userId: localStorage.getItem("userId"),
             token: localStorage.getItem("token"),
             bookProgress: [],
-            error: false
+            error: null
         };
 
         this.loadProgress = this.loadProgress.bind(this);
